@@ -1,17 +1,16 @@
 #include <fstream>
+#include <vector>
 #include <iostream>
 using namespace std;
-int foo(int arg1, int arg2){
-  return arg1*arg2; 
+double foo(double arg1){
+  return (arg1*(9./5.)+32); 
 }
 int main(){ 
-  int var1;
-  int var2;
+  double var1;
   ifstream in("input.txt");
-  for(int i=0; i<3 ; i++){
+  for(double i=0; i<3 ; i++){
    in>>var1;
-   in>>var2;
-   int a = foo(var1,var2);
+   double a = foo(var1);
    cout << a << endl;
   }
   return 0; 
