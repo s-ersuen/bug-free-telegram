@@ -7,11 +7,13 @@ double foo(double arg1){
 }
 int main(){ 
   double var1;
+  double var3;
+  ofstream out("output.txt");
   ifstream in("input.txt");
   for(double i=0; i<3 ; i++){
    in>>var1;
    double a = foo(var1);
-   cout << a << endl;
+   out << a << endl;
   }
   return 0; 
 }
