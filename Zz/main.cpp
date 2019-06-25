@@ -6,13 +6,16 @@ using namespace std;
 int main()
 {
   ofstream out("output.txt");
+  ofstream out2("output2.txt");
   mt19937 gen;
-  gen.seed(5);
-   int p=10000;
+  gen.seed(115);
+   int p=1000000;
   double  x=0; 
-   int dt=10; 
+   int dt=11;
+  double z=0;
+ double l=0; 
   uniform_int_distribution<int> dis(0,1);
-  for (int m=0; m<dt ; ++m){
+  for (int m=1.; m<dt ; ++m){
     
   for (int n=0; n<p ; ++n){
     int y=dis((gen)); 
@@ -20,9 +23,12 @@ int main()
     else {x=x-1 ;}
 
   }
-  x=x*x/p;
-    out<<x<<endl;
-    cout<<x<<endl;
+  z=z+x*x/p;
+  l=z+x/p;
+    out<<z<<endl;
+    cout<<z<<endl;
+    out2<<l<<endl;
+    cout << l<<endl; 
   }
 
   }  
