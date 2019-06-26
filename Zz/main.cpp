@@ -6,7 +6,7 @@
 using namespace std;
 int main()
 {
-  ofstream out("output3.txt");
+  ofstream out("output1.txt");
   ofstream out2("output.txt");
   mt19937 gen;
   gen.seed(116);
@@ -34,6 +34,8 @@ int main()
   }
 
 mort[m]=mort[m]/p;
+out << mort[m] << endl;
+cout << mort[m] << endl;
 for (int k=0 ; k<p ; ++k ){
 vort[m]=vort[m]+(ort[k]-mort[m])*(ort[k]-mort[m]);
 }
@@ -46,8 +48,8 @@ for (int k=0; k<2*dt+1 ; ++k){
 if (ort[n]==k-dt) {zort[k]++;}
 }
 
-out << zort[k]<< endl;
-cout<<k-dt <<": " <<zort[k]<< endl;}
+
+
   }  
-    
+}    
 
