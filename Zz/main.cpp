@@ -2,33 +2,41 @@
 #include <chrono> 
 #include <iostream>
 #include<fstream>
+#include<vector>
 using namespace std;
 int main()
 {
-  ofstream out("output.txt");
-  ofstream out2("output2.txt");
+  ofstream out("output2.txt");
+  ofstream out2("output.txt");
   mt19937 gen;
-  gen.seed(115);
+  gen.seed(116);
    int p=1000000;
   double  x=0; 
    int dt=11;
-  double z=0;
  double l=0; 
+ vector<double> ort (p,0);
+ vector<double> mort (dt,0);
+ vector<double> vort (dt,0);
   uniform_int_distribution<int> dis(0,1);
   for (int m=1.; m<dt ; ++m){
     
   for (int n=0; n<p ; ++n){
     int y=dis((gen)); 
-    if (y==1) {x=x+1 ; }
-    else {x=x-1 ;}
+    if (y==1) {ort[n]++; }
+    else {ort[n]--;}
 
   }
-  z=z+x*x/p;
-  l=z+x/p;
-    out<<z<<endl;
-    cout<<z<<endl;
-    out2<<l<<endl;
-    cout << l<<endl; 
+  for (int k=0; k<p ; ++k){
+  mort[m]=ort[k]+mort[m]; 
+  }
+
+mort[m]=mort[m]/p;
+for (int k=0 ; k<p ; ++k ){
+vort[m]=(ort[k]-mort[m])*(ort[k]-mort[m]);
+}
+    out<<vort[m]<<endl;
+    cout<<vort[m]<<endl;
+  
   }
 
   }  
