@@ -32,8 +32,9 @@ int main()
 
 mort[m]=mort[m]/p;
 for (int k=0 ; k<p ; ++k ){
-vort[m]=(ort[k]-mort[m])*(ort[k]-mort[m]);
+vort[m]=vort[m]+(ort[k]-mort[m])*(ort[k]-mort[m]);
 }
+vort[m]=vort[m]/p;
     out<<vort[m]<<endl;
     cout<<vort[m]<<endl;
   
