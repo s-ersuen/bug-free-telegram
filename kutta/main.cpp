@@ -1,21 +1,49 @@
-
 #include <chrono>
 #include <iostream>
 #include<fstream>
 #include<vector>
- using namespace std;
+#include<cmath>
+using namespace std;
+ofstream out("output.txt");
    int main()
    {
-   int p=100;
-  vector<double> k1(p+1);
+   int p=10000;
+  double  h=0.001;
+  double  m=1;
+  double  g=9.81;
+  double gamma= 0.1;
+  double l=1;
+  vector<double> k1(p+1,0);
+  vector<double> k2(p+1,0);
+  vector<double> k3(p+1,0);
+  vector<double> l1(p+1,0);
+  vector<double> l2(p+1,0);
+  vector<double> l3(p+1,0);
+  vector<double> z(p+1);
+  vector<double> phi(p+1,0);
+  z[0]=0.0;
+  phi[0]=1.0;
+  int j;
+  for (int i=0; i<p ; ++i){ 
+    j=i+1;
+   k1[i]= (-gamma * m * z[i]+ m * g * sin ( phi[i]))/(m*l);
+   k2[i]=(-gamma * m * (z[i]+ h/2 *k1[i] )+ m * g * sin ((phi[i])+h/2))/(m*l);
+   k3[i]= (-gamma * m * (z[i]+ h *k1[i] + 2*h*k2[i] )+ m * g * sin ((phi[i])+h))/(m*l);
+ 
+   
+z[j]= z[i]+ h*(1./6. * k1[i] + 4./6.* k2[i] + 1./6. * k3[i]); 
 
-  for (int n=0; i<p ; ++i){
-   k1[i]= (gamma * m * z[i]+ m * g * sin(phi[i]))/(m*l);
-   k2[i]=(gamma * m * (z[i]+ h/2 *k1[i] )+ m * g * sin((phi[i])+h/2))/(m*l);
-   k3[i]= (gamma * m * (z[i]- h *k1[i]+2*h*k2[i] )+ m * g * sin((phi[i])+h))/(m*l);
-   y[i+1]= y[i]+ h*(1/6 * k1[i] + 4/6 k2[i] + 1/6 * k3[i]); 
+   l1[i]=z[i]*l; 
+   l2[i]=z[i]+h/2*l;
+   l3[i]=z[i]+h*l;
+
+ phi[j] = phi[i] - h*(1./6. * l1[i] + 4./6. * l2[i]+ 1./6. * l3[i]);
+
+  
     
-
-   }
+  }
+  for (int r=0 ; r<p/10 ;r++ ){
+    out << phi[r*10] << endl;
+  }
   }
 
