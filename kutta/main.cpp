@@ -8,7 +8,7 @@ ofstream out("output.txt");
    int main()
    {
    int p=10000;
-  double  h=0.001;
+  double  h=0.01;
   double  m=1;
   double  g=9.81;
   double gamma= 0.1;
@@ -42,8 +42,12 @@ z[j]= z[i]+ h*(1./6. * k1[i] + 4./6.* k2[i] + 1./6. * k3[i]);
   
     
   }
-  for (int r=0 ; r<p/10 ;r++ ){
-    out << phi[r*10] << endl;
+  double x;
+  double y;
+    for (int r=0 ; r<p/100 ;r++ ){
+  x= sin(phi[r*10]);
+  y= cos(phi[r*10]);
+      out << x <<" " << y << endl;
   }
   }
 
