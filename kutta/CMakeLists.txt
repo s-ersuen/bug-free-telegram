@@ -1,1 +1,1 @@
-add_executable(name main.cpp)
+add_executable(kutta main.cpp)
