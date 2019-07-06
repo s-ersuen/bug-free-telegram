@@ -11,7 +11,7 @@ ofstream out("werte_ohne_reibung_36.txt");
   double h=3./100000;
   double m=1;
   double g=9.81;
-  double gamma= 0.;
+  double gamma=6 * M_PI * 17 /100000000 ;
   double l=1;
   vector<double> k1(p+1,0);
   vector<double> k2(p+1,0);
