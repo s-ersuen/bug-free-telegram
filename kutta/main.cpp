@@ -4,14 +4,15 @@
 #include<vector> 
 #include<cmath>
 using namespace std; 
-ofstream out("werte_ohne_reibung_36.txt");
+ofstream out("Eges_phi.cpp");
    int main()
    {
    int p=100000;
   double h=3./100000;
   double m=1;
   double g=9.81;
-  double gamma=6 * M_PI * 17 /100000000 ;
+ // double gamma=6 * M_PI * 17 /100000000 ;
+  double gamma=0.0;
   double l=1;
   vector<double> k1(p+1,0);
   vector<double> k2(p+1,0);
@@ -49,7 +50,7 @@ z[j]= z[i]+ h*(1./6. * k1[i] + 4./6.* k2[i] + 1./6. * k3[i]);
  Ekin[r]= (z[r]*l)*m/2.*(z[r]*l);
  Epot[r]= m*g*y[r];
  Eges[r] = Ekin[r]+Epot[r];
- out << phi[r] << " " << Epot[r] <<" " << Ekin[r] <<" " << Eges[r]<< endl;
-  // out<<phi[r] << " " << Eges[r] << endl; // out << phi[r] << " "<< z[r] << endl; // out << x <<" " << y << endl;
+// out << phi[r] << " " << Epot[r] <<" " << Ekin[r] <<" " << Eges[r]<< endl;
+  out<<phi[r] << " " << Eges[r] << endl; // out << phi[r] << " "<< z[r] << endl; // out << x <<" " << y << endl;
   }
   }
