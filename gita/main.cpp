@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <array>
+#include <math.h>
 using namespace std;
 int main(){
 int a=100;
