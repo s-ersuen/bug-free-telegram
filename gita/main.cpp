@@ -7,6 +7,10 @@ int main(){
 int a=100;
 ofstream out("output.txt");
 int tges = 20;
+double d;
+double d2;
+double d2min = 0.06;
+double dmin = 0.06;
 array<array<array<double,100>,100>,100> gitter;
 array<array<array<double,100>,100>,100> gitter2;
 array<array<array<double,100>,100>,100> gitter3;
@@ -25,6 +29,8 @@ for(int t=0; t<tges; t++) {
    for(int k=1; k<a -1; ++k){
   gitter[i][j][k]= (1./6.) *( gitter[i+1][j][k]+ gitter[i-1][j][k]+ gitter[i][j+1][k]+ gitter[i][j-1][k]+ gitter[i][j][k+1]+ gitter[i][j][k-1]);
  gitter2[i][j][k]=gitter[i][j][k];
+d = sqrt((gitter[i][j][k]-gitter2[i][j][k])*(gitter[i][j][k]-gitter2[i][j][k]));
+if (d<dmin){t=tges;}
   }
   }         
  }
@@ -48,6 +54,8 @@ out << i << " " << k << " " << gitter2[i][50][k]<<endl;
 //for (int k=1;k<a-1;k++){
 //gitter[i][j][k]= (1./6.) *( gitter[i+1][j][k]+ gitter[i-1][j][k]+ gitter[i][j+1][k]+ gitter[i][j-1][k]+ gitter[i][j][k+1]+ gitter[i][j][k-1]-gitter3[i][j][k]);
 //gitter2[i][j][k]=gitter[i][j][k];
+// d2= sqrt((gitter[i][j][k]-gitter2[i][j][k])*(gitter[i][j][k]-gitter2[i][j][k]));
+// if (d2<d2min) {t=tges;}
 //}}}}
 
 
